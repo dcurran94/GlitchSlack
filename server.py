@@ -58,13 +58,6 @@ def events_handler():
         # Respond to the challenge
         return Response(request_body_json["challenge"]), 200
 
-@app.route('/modal', methods=['GET'])  # Changed to POST as this method only handles post requests
-def events_handler():
-    # request_body_json = request.get_json()
-    
-        payload = {
-
-        return {"test"}
 
 if __name__ == '__main__':
     app.run()
