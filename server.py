@@ -11,7 +11,10 @@
 # A 'Fog Creek'–inspired demo by Kenneth Reitz™
 
 import os
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, jsonify, render_template, Response
+app = Flask(__name__)
+
+
 
 # Support for gomix's 'front-end' and 'back-end' UI.
 app = Flask(__name__, static_folder='public', template_folder='views')
@@ -40,6 +43,12 @@ def apply_kr_hello(response):
 def homepage():
     """Displays the homepage."""
     return render_template('index.html')
+  
+@app.route('/slashcommand', methods=['POST'])  # Changed to POST as this method only handles post requests
+def slash():
+    #'if request.form['token'] == "":
+        payload = {'text': 'Success'}
+        return jsonify(payload)
     
 @app.route('/dreams', methods=['GET', 'POST'])
 def dreams():
