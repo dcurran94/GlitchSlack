@@ -57,19 +57,14 @@ def events_handler():
     if "challenge" in request_body_json:
         # Respond to the challenge
         return Response(request_body_json["challenge"]), 200
+
+@app.route('/modal', methods=['GET'])  # Changed to POST as this method only handles post requests
+def events_handler():
+    # request_body_json = request.get_json()
     
-@app.route('/dreams', methods=['GET', 'POST'])
-def dreams():
-    """Simple API endpoint for dreams. 
-    In memory, ephemeral, like real dreams.
-    """
-  
-    # Add a dream to the in-memory database, if given. 
-    if 'dreams' in request.args:
-        DREAMS.append(request.args['dreams'])
-    
-    # Return the list of remembered dreams. 
-    return jsonify(DREAMS)
+        payload = {
+
+        return {"test"}
 
 if __name__ == '__main__':
     app.run()
