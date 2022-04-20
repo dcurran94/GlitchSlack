@@ -49,6 +49,14 @@ def slash():
     #'if request.form['token'] == "":
         payload = {'text': 'Success'}
         return jsonify(payload)
+      
+@app.route('/events', methods=['POST'])  # Changed to POST as this method only handles post requests
+def events_handler():
+    request_body_json = request.get_json()
+
+    if "challenge" in request_body_json:
+        # Respond to the challenge
+        return Response(request_body_json["challenge"]), 200
     
 @app.route('/dreams', methods=['GET', 'POST'])
 def dreams():
